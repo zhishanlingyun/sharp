@@ -8,6 +8,7 @@ import org.apache.http.impl.cookie.BasicClientCookie;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -81,17 +82,17 @@ public class Cmp {
                     if(StringUtils.isEmpty(len[2])||"0.0000".equals(len[2])){
                         sb.append(",");
                     }else {
-                        sb.append(len[2]);
+                        sb.append(new DecimalFormat("#").format(len[2]));
                     }
                     if(StringUtils.isEmpty(len[3])||"0.0000".equals(len[3])){
                         sb.append(",");
                     }else {
-                        sb.append(",").append(len[3]);
+                        sb.append(",").append(new DecimalFormat("#").format(len[3]));
                     }
                     if(StringUtils.isEmpty(len[5])||"0.0000".equals(len[5])){
                         sb.append(",");
                     }else {
-                        sb.append(",").append(len[5]);
+                        sb.append(",").append(new DecimalFormat("#").format(len[5]));
                     }
                     P p = new P("J_"+len[1]+"_U",sb.toString());
                     pl.add(p);
