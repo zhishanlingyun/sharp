@@ -12,6 +12,7 @@
     <module>sharp-config</module>
     <module>sharp-transfer</module>
     <module>sharp-research</module>
+    <module>sharp-study</module>
   </modules>
 
   <name>sharp-project</name>
