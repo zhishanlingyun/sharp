@@ -1,6 +1,7 @@
 package org.sharp.transfer;
 
 import jodd.io.FileUtil;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.CookieStore;
 import org.apache.http.impl.client.BasicCookieStore;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -34,14 +36,15 @@ public class Cmp {
     }
 
     public void process(){
-        List<P> ps = loadData(this.filename);
-        final BlockingQueue<P> queue = new ArrayBlockingQueue<P>(ps.size());
-        queue.addAll(ps);
-        for(P p : ps){
+        String[] skus = loadSku(this.filename);
+        final BlockingQueue<String> queue = new ArrayBlockingQueue<String>(skus.length);
+        queue.addAll(Arrays.asList(skus));
+        for(int p=0;p<10;p++){
             exe.submit(new Runnable() {
                 public void run() {
                     try {
-                        P p = queue.take();
+                        String sku = queue.take();
+                        HttpService.get(cookieStore,sku);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -64,6 +67,16 @@ public class Cmp {
         //String[] pr = jsp.split(",");
         P p = new P(line[0].trim(),jsp);
         return p;
+    }
+
+    public String[] loadSku(String file){
+        File f = new File(Path+File.separator+this.filename);
+        try {
+            return FileUtil.readLines(f,"UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public List<P> loadData(String file){

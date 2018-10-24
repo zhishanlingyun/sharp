@@ -6,6 +6,7 @@ import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import org.junit.Test;
 
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -59,6 +60,11 @@ public class CmpTest {
         System.out.println(p);
     }
 
+    @Test
+    public void f(){
+        String f = "76.5000";
+        System.out.println(new DecimalFormat("#").format(Double.valueOf(f)));
+    }
     /*@Test
     public void exportDB(){
         String[] domains = {
