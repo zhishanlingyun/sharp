@@ -31,6 +31,7 @@ public class TowSum {
         return result;
     }
 
+
     public static void main(String[] args) {
         int[] n1 = {2,5,3,9,5,1,3};
         System.out.println(Arrays.toString(findForceSum(n1,10)));
