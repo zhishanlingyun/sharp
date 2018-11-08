@@ -44,7 +44,7 @@ public class Vtx {
         Point point = new Point(-6,6);
         //bean.setPoint(point);
         Vtor vtor = new Vtor();
-        vtor.setSeverity(3);
+        vtor.setSeverity(2);
         vtor.validate(bean);
         if(vtor.hasViolations()){
             vtor.getViolations().stream().forEach(e-> System.out.println(JSON.toJSON(e)));
