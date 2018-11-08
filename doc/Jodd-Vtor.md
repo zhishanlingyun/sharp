@@ -1,10 +1,23 @@
 # Jodd 之 Vtor - 校验框架
-*原文参考[jodd-vtor](https://jodd.org/vtor/)*
+*原文参考 [jodd-vtor](https://jodd.org/vtor/)*
 ##概念
 * ValidationContext
-* ValidationConstraint
+  >验证器载体(上下文),用来存放 Check(检查点)
+  
 * Check
+  >检查点, 包括name(待校验字段名称) 和 ValidationConstraint(验证器)
+
+* ValidationConstraint
+  >验证器,是一个接口，作为扩展点，由不同子类实现验证的方法
+  该接口有两个方法<br>
+  **void configure(A annotation)**<br>
+  接收与之配套的注解里的参数，可以做一些初始化操作<br>
+  **boolean isValid(ValidationConstraintContext vcc, Object value)**<br>
+  校验逻辑<br>
+  
 * Vtor
+  >校验客户端,该类属于非线程安全的,禁止使用单例
+  
 
 
 ##校验模板代码
