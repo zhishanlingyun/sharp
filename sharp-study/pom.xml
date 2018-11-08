@@ -11,5 +11,17 @@
 
     <artifactId>sharp-study</artifactId>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>org.sharp</groupId>
+            <artifactId>sharp-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
