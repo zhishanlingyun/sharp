@@ -14,6 +14,11 @@ public class Bean {
     @PointTwo(x=-10,y=10,severity = 6,message = "point 点只能在(-10,0),(0,10)区域")
     private Point point;
 
+    private static int count;
+    static {
+        System.out.println("Bean static {}");
+    }
+
     public int getA() {
         return a;
     }
